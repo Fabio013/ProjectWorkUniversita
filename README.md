@@ -29,14 +29,15 @@ Lo scopo è **trasformare un'applicazione datata in un'app moderna, ben organizz
 
 ## 🧱 Architettura attuale
 
+```
 src/
 └── mypackage/
-├── Connessione.java
-├── login.java
-├── Prenota.java
-├── Prenotazione.java
-├── StampaStudenti.java
-└── TestConnessione.java
+    ├── Connessione.java
+    ├── login.java
+    ├── Prenota.java
+    ├── Prenotazione.java
+    ├── StampaStudenti.java
+    └── TestConnessione.java
 
 WebContent/
 ├── index.jsp
@@ -44,19 +45,23 @@ WebContent/
 ├── professore.jsp
 ├── elenco.jsp
 └── WEB-INF/
-└── web.xml
+    └── web.xml
+```
 
 ---
 
 ## 🗂️ Struttura Git adottata
 
-Branch	Scopo
-main	Codice stabile e rilasci ufficiali
-dev	Codice in lavorazione
-docs/*	Documentazione, readme, gitignore
-feat/*	Nuove funzionalità
-refactor/*	Ristrutturazione classi / struttura progetto
-bugfix/*	Correzione di errori
+```
+Branch         | Scopo
+-------------- | ----------------------------------------------
+main           | Codice stabile e rilasci ufficiali
+dev            | Codice in lavorazione
+docs/*         | Documentazione, readme, gitignore
+feat/*         | Nuove funzionalità
+refactor/*     | Ristrutturazione classi / struttura progetto
+bugfix/*       | Correzione di errori
+```
 
 ---
 
