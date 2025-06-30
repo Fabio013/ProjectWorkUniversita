@@ -1,1 +1,30 @@
-/build/
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Java
+*.class
+*.log
+*.jar
+*.war
+
+# Build
+target/
+bin/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Database dumps
+*.sql
+*.sqlite
