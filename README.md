@@ -1,51 +1,84 @@
-# 🎓 Gestionale Università – Progetto Java
+# 🎓 ProjectWorkUniversita
 
-Piattaforma gestionale sviluppata come project work per corso Java back-end, con focus su architettura a servlet, JSP, e database MySQL. In progressivo refactoring e miglioramento per studio e portfolio professionale.
-
-## 🚀 Tecnologie usate
-
-- Java 21
-- JSP + Servlet
-- JDBC / MySQL
-- Tomcat 11
-- Eclipse IDE (2025-03)
-- Git + GitHub
-
-## 🧠 Funzionalità attuali
-
-- 🔐 Login per Studente e Docente
-- 📋 Visualizzazione corsi
-- 📥 Iscrizione corsi (Studente)
-- 👁️ Visualizzazione studenti iscritti (Docente)
-
-## 🎯 Obiettivi del progetto
-
-- Refactoring completo secondo best practice
-- Aggiunta nuove funzionalità (CRUD, voti, gestione utenti)
-- Modernizzazione UI/UX (Bootstrap, validazione client)
-- Integrazione Git, README, e processi da portfolio
-
-## 🛠️ Stato del progetto
-
-| Componente | Stato |
-|------------|-------|
-| Login | ⚠️ Basic (da migliorare) |
-| UI | 🔲 Da ristrutturare |
-| Sicurezza | 🔲 Da introdurre |
-| GitHub | ✅ Collegato |
-| DB | ✅ Importato |
-
-## 📂 Struttura
-
-- `src/` – classi Java e servlet
-- `WebContent/` – JSP e risorse web
-- `WEB-INF/web.xml` – configurazione servlet
-- `dump.sql` – schema MySQL di partenza
-
-## 👨‍💻 Autore
-
-📎 Progetto a scopo didattico (Back-end Java)
+Piattaforma gestionale Java per ambiente universitario, derivata da un progetto legacy (2019) e **modernizzata gradualmente** come esercitazione back-end.  
+Lo scopo è **trasformare un'applicazione datata in un'app moderna, ben organizzata e facilmente estendibile**, nel contesto di un corso di studi Java Back-End.
 
 ---
 
-📌 *Work in progress – refactor in corso, documentazione aggiornata costantemente.*
+## 📌 Obiettivi del progetto
+
+✅ Correggere bug e refusi nel codice legacy  
+✅ Organizzare i package e i moduli secondo best practice  
+✅ Rifattorizzare classi e servlet con pattern coerenti  
+✅ Migliorare l'esperienza utente (UI, JSP, validazioni)  
+✅ Integrare Git, GitHub e gestione dei branch per mostrare padronanza del flusso di sviluppo  
+✅ Documentare ogni passo per usarlo come **portfolio personale**
+
+---
+
+## 🛠️ Tecnologie e strumenti
+
+- **Java 21**
+- **Eclipse IDE 2025-03**
+- **Tomcat 11**
+- **MySQL 8.x + Workbench**
+- **JSP, Servlet, HTML5**
+- **Git + GitHub (con branch `main`, `dev`, `feature/*`, `docs/*`)**
+
+---
+
+## 🧱 Architettura attuale
+
+```
+src/
+└── mypackage/
+    ├── Connessione.java
+    ├── login.java
+    ├── Prenota.java
+    ├── Prenotazione.java
+    ├── StampaStudenti.java
+    └── TestConnessione.java
+
+WebContent/
+├── index.jsp
+├── studente.jsp
+├── professore.jsp
+├── elenco.jsp
+└── WEB-INF/
+    └── web.xml
+```
+
+---
+
+## 🗂️ Struttura Git adottata
+
+```
+Branch         | Scopo
+-------------- | ----------------------------------------------
+main           | Codice stabile e rilasci ufficiali
+dev            | Codice in lavorazione
+docs/*         | Documentazione, readme, gitignore
+feat/*         | Nuove funzionalità
+refactor/*     | Ristrutturazione classi / struttura progetto
+bugfix/*       | Correzione di errori
+```
+
+---
+
+## 📘 Stato attuale
+
+🔹 **Analisi codice completata**  
+🔹 **Importato dump MySQL**  
+🔹 **Progetto collegato a GitHub**  
+🔹 **README in revisione**  
+🔸 Inizio ristrutturazione del codice in corso
+
+---
+
+## 👨‍💻 Autore
+
+👤 Fabio013  
+🔗 [GitHub Profile](https://github.com/Fabio013)  
+📘 Progetto personale per portfolio e pratica reale con Java enterprise
+
+---
