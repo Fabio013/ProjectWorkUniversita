@@ -1,4 +1,7 @@
-package mypackage;
+// 🔧 Refactor 2025-07
+// Classe spostata da `mypackage` a `model`
+
+package com.universita.gestionale.model;
 
 import java.io.IOException;
 
@@ -6,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.universita.gestionale.dao.Connessione;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
