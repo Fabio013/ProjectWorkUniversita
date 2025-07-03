@@ -1,4 +1,8 @@
-package mypackage;
+// 🔧 Refactor 2025-07
+// Classe spostata da `mypackage` a `controller`
+// Rinominata per seguire le convenzioni Java per le servlet
+
+package com.universita.gestionale.controller;
 
 import java.io.IOException;
 
@@ -6,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.universita.gestionale.dao.Connessione;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -20,13 +26,13 @@ import jakarta.servlet.http.HttpServletResponse;
  * Servlet implementation class StampaStudenti
  */
 @WebServlet("/StampaStudenti")
-public class StampaStudenti extends HttpServlet {
+public class StampaStudentiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public StampaStudenti() {
+	public StampaStudentiServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

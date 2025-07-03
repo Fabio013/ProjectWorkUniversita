@@ -1,4 +1,7 @@
-package mypackage;
+// 🔧 Refactor 2025-07
+// Classe spostata da `mypackage` a `dao`
+
+package com.universita.gestionale.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

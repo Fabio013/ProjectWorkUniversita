@@ -1,4 +1,9 @@
-package mypackage;
+// 🔧 Refactor 2025-07
+// Classe spostata da `mypackage` a `test`
+
+package com.universita.gestionale.test;
+
+import com.universita.gestionale.dao.Connessione;
 
 public class TestConnessione {
     public static void main(String[] args) {
