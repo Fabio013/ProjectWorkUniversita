@@ -5,6 +5,7 @@
  - Aggiunto controllo su attributo sessione "matricola"
  - Evitata stampa di "null" se sessione assente
  - Aggiunta gestione messaggio default se matricola assente
+ - Corretto rendering condizionale di messaggio "successo" per evitare output "null"
 
  Note:
  Questo controllo migliora la UX e previene comportamenti anomali
