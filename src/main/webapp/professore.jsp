@@ -18,12 +18,14 @@ String Data= (String)request.getAttribute("Data");
 
 
 %>
-<% if(nome==null && cognome==null){
-	
-	response.sendRedirect("index.jsp");
+<%
+if (nome == null || cognome == null) {
+    response.sendRedirect("index.jsp");
+    return; // evita che continui ad eseguire il resto della pagina
 }
 %>
-<p>Bentornato <%=nome%><%=cognome%></p>
+
+<p>Bentornato <%= nome + " " + cognome %></p>
 <a href="logout.jsp">logout</a>
 <% if(appelli!=null){	
 
