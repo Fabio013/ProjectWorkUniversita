@@ -1,3 +1,17 @@
+<%-- 
+ Refactor 2025-07
+ Autore: Fabio013
+ Descrizione:
+ - Aggiunto controllo su attributo sessione "matricola"
+ - Evitata stampa di "null" se sessione assente
+ - Aggiunta gestione messaggio default se matricola assente
+ - Corretto rendering condizionale di messaggio "successo" per evitare output "null"
+
+ Note:
+ Questo controllo migliora la UX e previene comportamenti anomali
+ in caso di accesso diretto alla JSP o sessione scaduta.
+--%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%>
@@ -18,12 +32,13 @@ String messaggio = (String) request.getAttribute("successo");
 String data = (String) request.getAttribute("data");
 String materia2 = (String) request.getAttribute("materia2");
 %>
-<% if(matricola==null){
-	
-	response.sendRedirect("index.jsp");
+<%
+if (matricola == null) {
+    response.sendRedirect("index.jsp");
+    return;
 }
 %>
-<p>Benvenuto studente:<%=matricola %></p> 
+<p>Benvenuto studente: <%= matricola != null ? matricola : "Utente non identificato" %></p>  
 <a href="logout.jsp">logout</a>
 <% if(res!=null) {%>
 <table border=1>
@@ -74,8 +89,9 @@ Inserisci la prenotazione che vuoi effettuare
 <input type="number" name="appello">
 <input type="submit" value="Prenota"></form>
 <%} %>
-<%if(messaggio!=null) %>
-<%=messaggio %>
+<% if (messaggio != null) { %>
+<p><%= messaggio %></p>
+<% } %>
 
 <%if(materia2!=null && data!=null){ %>
 <p> Prenotazione effettuata con successo in data <%=data %> per il corso <%=materia2 %></p>
