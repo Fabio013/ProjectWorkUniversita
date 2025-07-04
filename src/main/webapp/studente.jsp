@@ -88,8 +88,9 @@ Inserisci la prenotazione che vuoi effettuare
 <input type="number" name="appello">
 <input type="submit" value="Prenota"></form>
 <%} %>
-<%if(messaggio!=null) %>
-<%=messaggio %>
+<% if (messaggio != null) { %>
+<p><%= messaggio %></p>
+<% } %>
 
 <%if(materia2!=null && data!=null){ %>
 <p> Prenotazione effettuata con successo in data <%=data %> per il corso <%=materia2 %></p>
