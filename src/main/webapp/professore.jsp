@@ -1,3 +1,16 @@
+<%-- 
+ Refactor 2025-07
+ Autore: Fabio013
+ Descrizione:
+ - Corretto controllo su attributi sessione "nome" e "cognome"
+ - Evitata stampa di "nullnull" in assenza di dati
+ - Introdotto return per bloccare esecuzione dopo redirect
+
+ Note:
+ Questa modifica previene bug visivi e comportamenti errati
+ se il professore accede alla pagina senza sessione valida.
+--%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import= "java.sql.*" %>
