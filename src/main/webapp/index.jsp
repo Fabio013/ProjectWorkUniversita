@@ -1,33 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@page import="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Benvenuto</title>
+    <meta charset="UTF-8">
+    <title>Login Università</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    // 🔐 Validazione lato client
+    function validateForm() {
+        const username = document.forms["loginForm"]["username"].value;
+        const password = document.forms["loginForm"]["password"].value;
+        const errorDiv = document.getElementById("error-msg");
+
+        if (username.trim() === "" || password.trim() === "") {
+            errorDiv.textContent = "⚠️ Inserisci username e password";
+            return false;
+        }
+        return true;
+    }
+    </script>
 </head>
-<body background="https://www.investireoggi.it/economia/wp-content/uploads/sites/11/2018/01/universita-640x342.jpg" >
-<%
-String messaggio= (String)request.getAttribute("messaggio");
-%>
-<% 
-if(messaggio!=null){%>
-<p align="center">
-<a style="font-family:helvetica; color:yellow;font-size:20px">
-<%out.print(messaggio);%></a> <%-- si poteva fare anche con l'espressione <%=messaggio%> --%>
-</p>
-<%} %>
+<body>
+    <%
+    String messaggio = (String) request.getAttribute("messaggio");
+    %>
 
+    <% if (messaggio != null) { %>
+        <p class="error"><%= messaggio %></p>
+    <% } %>
 
-<div align="center">
-<form action="login" method="post">
-<h3>inserisci nome utente</h3>
-<input type="text" name="username"><p>
-<h3>inserisci password</h3>
-<input type="password" name="password"><p>
-<input type="submit" value="Accedi"><p>
-</form>
-</div>
+    <form name="loginForm" action="login" method="post" onsubmit="return validateForm();">
+        <h2>Login Universitario</h2>
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="submit" value="Accedi">
+        <div id="error-msg" class="error"></div>
+    </form>
 </body>
 </html>

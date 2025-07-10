@@ -1,0 +1,42 @@
+/* 🔧 style.css - Stili base per login UI */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #003366, #336699);
+  color: #fff;
+  text-align: center;
+  padding-top: 100px;
+  margin: 0;
+}
+
+form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  border-radius: 5px;
+  border: none;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
