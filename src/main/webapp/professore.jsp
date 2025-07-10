@@ -1,88 +1,92 @@
 <%-- 
  Refactor 2025-07
  Autore: Fabio013
- Descrizione:
+
+ Descrizione logica:
  - Corretto controllo su attributi sessione "nome" e "cognome"
  - Evitata stampa di "nullnull" in assenza di dati
  - Introdotto return per bloccare esecuzione dopo redirect
 
+ Descrizione UI:
+ - Allineamento visivo con login e studente.jsp
+ - Tabelle migliorate con CSS responsive
+ - Messaggi chiari per UX più fluida
+ - Uniformità con stile moderno e accessibile
+
  Note:
  Questa modifica previene bug visivi e comportamenti errati
  se il professore accede alla pagina senza sessione valida.
+ Inoltre migliora l'usabilità e la leggibilità con stile coerente.
 --%>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ page import= "java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Area Professore</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<% String nome= (String)session.getAttribute("nome");
-String cognome= (String)session.getAttribute("cognome");
-String materia=(String)session.getAttribute("materia");
-ResultSet appelli=(ResultSet)request.getAttribute("appelli");
-ResultSet elenco=(ResultSet)request.getAttribute("elenco_studenti");
-String nomeMateria= (String)request.getAttribute("Materia");
-String Data= (String)request.getAttribute("Data");
 
-
-%>
 <%
+String nome = (String) session.getAttribute("nome");
+String cognome = (String) session.getAttribute("cognome");
+String materia = (String) session.getAttribute("materia");
+ResultSet appelli = (ResultSet) request.getAttribute("appelli");
+ResultSet elenco = (ResultSet) request.getAttribute("elenco_studenti");
+String nomeMateria = (String) request.getAttribute("Materia");
+String Data = (String) request.getAttribute("Data");
+
 if (nome == null || cognome == null) {
     response.sendRedirect("index.jsp");
-    return; // evita che continui ad eseguire il resto della pagina
+    return;
 }
 %>
 
-<p>Bentornato <%= nome + " " + cognome %></p>
-<a href="logout.jsp">logout</a>
-<% if(appelli!=null){	
+<h2>👨‍🏫 Bentornato <%= nome %> <%= cognome %></h2>
+<a href="logout.jsp">Logout</a>
 
-%>
-<p> Per la sua materia: <%=materia %> sono disponibili i seguenti appelli </p>
-<table border=1>
-<tr>
-<th>ID Appello</th>
-<th>Data</th>
-</tr>
-<%
-while(appelli.next()){	
-%>
-<tr>
-<th><%=appelli.getInt(1)%></th>
-<th><%=appelli.getDate("Data") %></th>
-</tr>
-</table>
-<% }%>
-<form action="StampaStudenti" method="post">
-<p><input type="number" name="ID_appello"></p>
-<p><input type="submit" value="Vai"></p>
-</form>
-<%
-}%>
-<% if(elenco!=null){%>	
+<% if (appelli != null) { %>
+    <h3>Appelli disponibili per la materia: <%= materia %></h3>
+    <table>
+        <tr>
+            <th>ID Appello</th>
+            <th>Data</th>
+        </tr>
+        <% while (appelli.next()) { %>
+        <tr>
+            <td><%= appelli.getInt(1) %></td>
+            <td><%= appelli.getDate("Data") %></td>
+        </tr>
+        <% } %>
+    </table>
 
-<p>Per l'esame<%=nomeMateria %> in data<%=Data %>si sono prenotati i seguenti studenti: </p>
-<table border=1>
-<tr>
-<th>Nome</th>
-<th>Cognome</th>
-<th>Matricola</th>
-</tr>
-<%
-while(elenco.next()){	
-%>
-<tr>
-<th><%=elenco.getString("nome")%></th>
-<th><%=elenco.getString("cognome")%></th>
-<th><%=elenco.getString("Matricola") %></th>
-<% }%>
-<%} %>
-</tr>
-</table>
+    <form action="StampaStudenti" method="post">
+        <p>Inserisci l'ID dell'appello per visualizzare gli studenti:</p>
+        <input type="number" name="ID_appello">
+        <input type="submit" value="Visualizza Iscritti">
+    </form>
+<% } %>
+
+<% if (elenco != null) { %>
+    <h3>Studenti prenotati per <%= nomeMateria %> in data <%= Data %></h3>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Matricola</th>
+        </tr>
+        <% while (elenco.next()) { %>
+        <tr>
+            <td><%= elenco.getString("nome") %></td>
+            <td><%= elenco.getString("cognome") %></td>
+            <td><%= elenco.getString("Matricola") %></td>
+        </tr>
+        <% } %>
+    </table>
+<% } %>
+
 </body>
 </html>
